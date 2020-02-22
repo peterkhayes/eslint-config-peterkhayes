@@ -2,6 +2,7 @@ const PLUGINS = ['@typescript-eslint', 'prettier', 'react-hooks'];
 const EXTENDS = [
   'eslint:recommended',
   'plugin:@typescript-eslint/recommended',
+  'plugin:react/recommended',
   'prettier',
   'prettier/@typescript-eslint',
   'prettier/react',
