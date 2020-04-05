@@ -25,6 +25,14 @@ module.exports = { // eslint-disable-line
   rules: {
     // this is pretty aggressive
     '@typescript-eslint/explicit-function-return-type': 'off',
+    // Allow class/function declarations to come later
+    '@typescript-eslint/no-use-before-define': [
+      'error',
+      {
+        functions: false,
+        classes: false,
+      },
+    ],
     // Allow unused args/vars to be marked with an underscore
     '@typescript-eslint/no-unused-vars': [
       'error',
@@ -33,6 +41,7 @@ module.exports = { // eslint-disable-line
         varsIgnorePattern: '^_',
       },
     ],
+    'no-constant-condition': 0,
     'prettier/prettier': [
       'error',
       {
