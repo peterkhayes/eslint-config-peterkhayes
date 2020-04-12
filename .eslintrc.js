@@ -1,3 +1,6 @@
 module.exports = {
-  extends: '.',
+  extends: './js',
+  env: {
+    node: true,
+  }
 }
