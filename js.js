@@ -2,7 +2,7 @@
   Base configuration, WITHOUT Typescript.
 */
 
-module.exports = { // eslint-disable-line
+module.exports = {
   plugins: ['prettier', 'jest'],
   parserOptions: {
     ecmaVersion: 2018,

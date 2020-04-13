@@ -1,10 +1,11 @@
 const baseConfig = require('./js');
 
 /*
-  Base configuration, WITH Typescript.
+  Base configuration, WITH Typescript. Based on non-Typescript config.
+  Not using `extends` here because we *need* the prettier plugins to come last.
 */
 
-module.exports = { // eslint-disable-line
+module.exports = {
   ...baseConfig,
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -19,6 +20,7 @@ module.exports = { // eslint-disable-line
     'prettier/@typescript-eslint',
   ],
   rules: {
+    ...baseConfig.rules,
     // Preserve rules that have Typescript versions
     '@typescript-eslint/no-use-before-define': baseConfig.rules['no-use-before-define'],
     '@typescript-eslint/no-unused-vars': baseConfig.rules['no-unused-vars'],

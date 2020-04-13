@@ -1,12 +1,14 @@
 const baseConfig = require('.');
 
 /*
-  Configuration for projects using React.
+  Configuration for projects using React. Based on Typescript config.
+  Not using `extends` here because we *need* the prettier plugins to come last.
 */
 
 module.exports = {
   ...baseConfig,
   env: {
+    ...baseConfig.env,
     browser: true,
     commonjs: true,
   },

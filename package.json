@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-peterkhayes",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "My personal eslint config",
   "main": "index.js",
   "repository": "https://github.com/peterkhayes/eslint-config-peterkhayes",
