@@ -13,8 +13,9 @@ module.exports = { // eslint-disable-line
   },
   plugins: ['@typescript-eslint', ...baseConfig.plugins],
   extends: [
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    ...baseConfig.plugins,
+    ...baseConfig.extends,
     'prettier/@typescript-eslint',
   ],
   rules: {

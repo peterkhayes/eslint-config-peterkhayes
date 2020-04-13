@@ -7,7 +7,11 @@ module.exports = { // eslint-disable-line
   parserOptions: {
     ecmaVersion: 2018,
   },
-  extends: ['eslint:recommended', 'plugin:jest/all', 'prettier'],
+  env: {
+    es6: true,
+    'shared-node-browser': true,
+  },
+  extends: ['eslint:recommended', 'prettier'],
   rules: {
     // Support hoisting of classes and functions
     'no-use-before-define': ['error', { functions: false, classes: false }],
@@ -27,9 +31,13 @@ module.exports = { // eslint-disable-line
   },
   overrides: [
     {
-      files: ['*.test.ts', '*.test.tsx'],
+      files: ['*.test.*'],
       env: {
         jest: true,
+      },
+      rules: {
+        ...require('eslint-plugin-jest').configs.recommended.rules,
+        ...require('eslint-plugin-jest').configs.style.rules,
       },
     },
   ],
