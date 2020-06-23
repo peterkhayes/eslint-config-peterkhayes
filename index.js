@@ -16,15 +16,54 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     ...baseConfig.extends,
     'prettier/@typescript-eslint',
   ],
   rules: {
     ...baseConfig.rules,
-    // Preserve rules that have Typescript versions
-    '@typescript-eslint/no-use-before-define': baseConfig.rules['no-use-before-define'],
-    '@typescript-eslint/no-unused-vars': baseConfig.rules['no-unused-vars'],
-    // This is pretty aggressive; Typescript can infer return types
+
+    // These rules are too aggressive I think
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/require-await': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/prefer-regexp-exec': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/array-type': [
+      'error',
+      { default: 'generic', readonly: 'generic' },
+    ],
+
+    // These rules come from the `@typescript-eslint/recommended-requiring-type-checking`
+    // config. We've still got a lot of unsafe code in our Typescript. Having them as warnings
+    // is useful for encourging folks to fix them.
+    '@typescript-eslint/no-implied-eval': 'warn',
+    '@typescript-eslint/no-non-null-assertion': 'warn',
+    '@typescript-eslint/no-unsafe-assignment': 'warn',
+    '@typescript-eslint/no-unsafe-call': 'warn',
+    '@typescript-eslint/no-unsafe-member-access': 'warn',
+    '@typescript-eslint/no-unsafe-return': 'warn',
+    '@typescript-eslint/restrict-plus-operands': 'warn',
+    '@typescript-eslint/restrict-template-expressions': 'warn',
+    '@typescript-eslint/unbound-method': 'warn',
+
+    // This seems to have issues with async functions inside of setTimeout.
+    // Disabling `checksVoidReturn` seems to fix this.
+    '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
+
+    // Since this configuration applies to all files, we don't want this rule. It forbids node-style
+    // imports, which we use in all of our scripts.
+    '@typescript-eslint/no-var-requires': 'off',
   },
+  overrides: [
+    // Configuration files are assumed to be node
+    {
+      files: ['*rc.js'],
+      env: {
+        node: true,
+      },
+    },
+  ],
 };

@@ -13,11 +13,20 @@ module.exports = {
     commonjs: true,
   },
   plugins: ['react', 'react-hooks', ...baseConfig.plugins],
-  extends: [
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    ...baseConfig.extends,
-  ],
+  extends: ['plugin:react/recommended', ...baseConfig.extends],
+  rules: {
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+
+    // The next version of this rule will add this option by default
+    'react/jsx-key': ['error', { checkFragmentShorthand: true }],
+
+    // This prevents valid usage of quotes and parens in jsx; Typescript will catch the bad ones
+    'react/no-unescaped-entities': 'off',
+
+    // Because we have Typescript, we don't need prop-types.
+    'react/prop-types': 'off',
+  },
   settings: {
     ...baseConfig.settings,
     react: {
