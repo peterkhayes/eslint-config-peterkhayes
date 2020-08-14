@@ -12,8 +12,14 @@ module.exports = {
     browser: true,
     commonjs: true,
   },
-  plugins: ['react', 'react-hooks', ...baseConfig.plugins],
-  extends: ['plugin:react/recommended', ...baseConfig.extends],
+  plugins: ['react', 'react-hooks', 'jsx-a11y', ...baseConfig.plugins],
+  extends: [
+    'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    ...baseConfig.extends,
+    'plugin:prettier/react',
+  ],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
@@ -28,7 +34,6 @@ module.exports = {
     'react/prop-types': 'off',
   },
   settings: {
-    ...baseConfig.settings,
     react: {
       version: 'detect',
     },
