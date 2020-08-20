@@ -18,7 +18,15 @@ module.exports = {
     'prettier/@typescript-eslint',
   ],
   rules: {
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        printWidth: 90,
+        singleQuote: true,
+        arrowParens: 'always',
+        trailingComma: 'all',
+      },
+    ],
 
     // Additional standard rules that were enabled in our old Airbnb-based config
     'consistent-return': 'error',
