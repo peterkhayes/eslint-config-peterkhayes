@@ -18,7 +18,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     ...baseConfig.extends,
-    'prettier/react',
   ],
   rules: {
     ...baseConfig.rules,
